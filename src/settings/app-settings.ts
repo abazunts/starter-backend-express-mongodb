@@ -25,11 +25,11 @@ const env = new EnvironmentSettings((process.env.ENV || "DEVELOPMENT") as Enviro
 const api = new APISettings(process.env);
 
 const settingsEnv: {settings: SettingsType} =
-    env.isDevelopment() ? require("../settings.development")
-        : env.isStaging() ? require("../settings.staging")
-        : require("../settings")
+    env.isDevelopment() ? require("./settings.development")
+        : env.isStaging() ? require("./settings.staging")
+        : require("./settings")
 
-const settingsDefault: {settings: SettingsType} = require("./../settings");
+const settingsDefault: {settings: SettingsType} = require("./settings");
 
 const resultSettings = _.merge(settingsDefault.settings, settingsEnv.settings);
 
